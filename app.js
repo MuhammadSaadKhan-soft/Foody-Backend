@@ -60,7 +60,16 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+app.get("/*", (req, res) => {
+  res.send(`
+    <div style="font-family: Arial; text-align: center; margin-top: 50px;">
+      <h1>🚀 Backend Connected & Running Successfully!</h1>
+      <p style="color: green;">All necessary folders are auto-created, and MongoDB is connected.</p>
+      <hr style="width: 60%; margin: 20px auto;">
+      <h3 style="color: #555;">Developed by Muhammad Saad</h3>
+    </div>
+  `);
+});
 // Routes
 app.use("/api", authRouter);
 app.use("/api/user", usersRouter);
